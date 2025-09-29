@@ -7,7 +7,7 @@ public class Main {
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
-		Agenda contactos = new Agenda();
+		Agenda contactos = new Agenda(2);
 		int numMenu = 0;
 		String nombre;
 		String apellido;
@@ -28,14 +28,17 @@ public class Main {
 			sc.nextLine();
 			switch (numMenu) {
 			case 1:
-				System.out.print("Nombre: ");
-				nombre = sc.nextLine();
-				System.out.print("Apellido: ");
-				apellido = sc.nextLine();
-				System.out.print("Teléfono: ");
-				telefono = sc.nextLine();
-				Contacto contactoNuevo = new Contacto(nombre, apellido, telefono);
-				contactos.anadirContacto(contactoNuevo);
+				if(contactos.hayEspacacio()) {
+					System.out.print("Nombre: ");
+					nombre = sc.nextLine();
+					System.out.print("Apellido: ");
+					apellido = sc.nextLine();
+					System.out.print("Teléfono: ");
+					telefono = sc.nextLine();
+					Contacto contactoNuevo = new Contacto(nombre, apellido, telefono);
+					contactos.anadirContacto(contactoNuevo);
+				}
+				
 				break;
 			case 2:
 				System.out.print("Nombre: ");

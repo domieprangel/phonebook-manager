@@ -1,6 +1,8 @@
 package com.phonebook;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Agenda {
@@ -21,13 +23,17 @@ public class Agenda {
 	    return contactos.containsKey(clave);
 	}
 
+	public boolean hayEspacacio() {
+	    if (contactos.size() >= limiteContactos) {
+	        System.out.println("La agenda está llena, no puedes agregar más contactos");
+	        return false;
+	    }
+	    return true;
+	}
+	
 	public void anadirContacto(Contacto c) {
 		String clave = normalizarNombre(c);
 
-	    if (contactos.size() >= limiteContactos) {
-	        System.out.println("La agenda está llena, no puedes agregar más contactos");
-	        return;
-	    }
 
 	    if (existeContacto(c)) {
 	        System.out.println("Ya existe un contacto con ese nombre");
@@ -35,23 +41,34 @@ public class Agenda {
 	    }
 
 	    if (c.getNombre().trim().isEmpty() ||c.getApellido().trim().isEmpty() || c.getTelefono().trim().isEmpty()) {
-	        System.out.println("El nombre no puede estar vacío. Ingresa un nombre:");
+	        System.out.println("\nNo se recibio la informacion requerida\n");
 	        return;
 	    }
 
 	    contactos.put(clave, c);
-	    System.out.println("Se agregó correctamente");
+	    System.out.println("\n~Se agregó correctamente~\n");
 
 	}
 
 	public void listarContactos() {
-		if (!contactos.isEmpty()) {
-	        for (Contacto c : contactos.values()) {
-	            System.out.println(c);
-	        }
-	    } else {
-	        System.out.println("No hay contactos registrados");
-	    }
+		 if (!contactos.isEmpty()) {
+		        // Convertimos los valores del HashMap a una lista
+		        List<Contacto> lista = new ArrayList<>(contactos.values());
+
+		        // Ordenamos por nombre + apellido (ignorando mayúsculas/minúsculas)
+		        lista.sort((c1, c2) -> {
+		            String nombre1 = c1.getNombre() + " " + c1.getApellido();
+		            String nombre2 = c2.getNombre() + " " + c2.getApellido();
+		            return nombre1.compareToIgnoreCase(nombre2);
+		        });
+
+		        // Usamos el for-each clásico como en tu código original
+		        for (Contacto c : lista) {
+		            System.out.println(c); // se aprovecha el toString()
+		        }
+		    } else {
+		        System.out.println("No hay contactos registrados");
+		    }
 	}
 	
     private String normalizarNombre(String nombre, String apellido) {
