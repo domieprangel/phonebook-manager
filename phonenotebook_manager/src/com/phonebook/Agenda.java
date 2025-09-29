@@ -18,7 +18,6 @@ public class Agenda {
     
     public boolean existeContacto(Contacto c) {
     	if(contactos.containsKey(c.getNombre().trim().toLowerCase())) {
-    		System.out.println("Ya existe un contacto con ese nombre");
     		return true;
     	}
     	return false;
@@ -36,20 +35,39 @@ public class Agenda {
     		return;
     	}
     	
-    	if(c.getNombre().trim().isEmpty()) {
+    	if(normalizarNombre(c.getNombre()).isEmpty()) {
     		System.out.println("El nombre no puede estar vacío. Ingresa un nombre:");
     		return;
     	}
     	
-    	contactos.put(c.getNombre().trim().toLowerCase(), c);
+    	contactos.put(normalizarNombre(c.getNombre()), c);
     	System.out.println("Se agregó correctamente");
     }
     
     public void listarContactos() {
-    	for(Contacto c : contactos.values()) {
-    		System.out.println(c);
+    	if(!contactos.isEmpty()) {
+    		for(Contacto c : contactos.values()) {
+        		System.out.println(c);
+        	}
+    	}
+    	else {
+    		System.out.println("No hay contactos registrados");
     	}
     }
-
-	
+    
+    private String normalizarNombre(String n) {
+    	return n.trim().toLowerCase();
+    }
+    
+    public void buscaContacto(String nombre) {
+    	Contacto contacto = contactos.get(normalizarNombre(nombre));
+		
+    	if(contacto != null) {
+    		System.out.println("Telefono de "+contacto.getNombre() +": "+contacto.getTelefono());
+    	}
+    	else {
+    		System.out.println("No se encontro el contacto de "+nombre);
+    	}
+    	
+    }
 }
