@@ -1,8 +1,0 @@
-/**
- * 
- */
-/**
- * 
- */
-module phonenotebook_manager {
-}
