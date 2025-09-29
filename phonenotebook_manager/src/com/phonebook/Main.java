@@ -3,8 +3,8 @@ package com.phonebook;
 public class Main {
 
 	public static void main(String[] args) {
-		Contacto contacto = new Contacto("Dom", "123456878");
-		Contacto contacto2 = new Contacto("Jen", "123456878");
+		Contacto contacto = new Contacto("Dom Ran", "123456878");
+		Contacto contacto2 = new Contacto("Jaime", "123456878");
 		Contacto contacto3 = new Contacto("Jen", "123456878");
 		Agenda agenda = new Agenda();
 		
@@ -18,5 +18,9 @@ public class Main {
 		agenda.listarContactos();
 		
 		agenda.buscaContacto("JaaaimE");
+		agenda.modificarTelefono("Dom", "Ran", "123");
+		agenda.espaciosLibres();
+		System.out.println(contacto);
+	
 	}
 }
