@@ -1,26 +1,81 @@
 package com.phonebook;
 
+import java.util.Scanner;
+
 public class Main {
 
 	public static void main(String[] args) {
+<<<<<<< HEAD
 		Contacto contacto = new Contacto("Dom","Ran","123456878");
 		Contacto contacto2 = new Contacto("Jaime","Rdgz","123456878");
 		Contacto contacto3 = new Contacto("Jen","Martinez","123456878");
 		Agenda agenda = new Agenda();
+=======
+		Scanner sc = new Scanner(System.in);
+		Agenda contactos = new Agenda();
+		int numMenu = 0;
+		String nombre;
+		String apellido;
+		String telefono;
+		do {
+			System.out.println("===============================");
+			System.out.println("MENÚ DE AGENDA TELEFÓNICA");
+			System.out.println("===============================");
+			System.out.println("1. Agregar contacto nuevo");
+			System.out.println("2. Buscar contacto");
+			System.out.println("3. Mostrar contactos guardados");
+			System.out.println("4. Modificar teléfono de contacto");
+			System.out.println("5. Eliminar contacto");
+			System.out.println("6. Salir del menú");
+			System.out.println("===============================");
+			System.out.print("Escribe el número de la acción que deseas realizar: ");
+			numMenu = sc.nextInt();
+			sc.nextLine();
+			switch (numMenu) {
+			case 1:
+				System.out.print("Nombre: ");
+				nombre = sc.nextLine();
+				System.out.print("Apellido: ");
+				apellido = sc.nextLine();
+				System.out.print("Teléfono: ");
+				telefono = sc.nextLine();
+				Contacto contactoNuevo = new Contacto(nombre, apellido, telefono);
+				contactos.anadirContacto(contactoNuevo);
+				break;
+			case 2:
+				System.out.print("Nombre: ");
+				nombre = sc.nextLine();
+				System.out.print("Apellido: ");
+				apellido = sc.nextLine();
+				contactos.buscaContacto(nombre,apellido);
+				break;
+			case 3:
+				contactos.listarContactos();
+				break;
+			case 4:
+				System.out.print("Nombre: ");
+				nombre = sc.nextLine();
+				System.out.print("Apellido: ");
+				apellido = sc.nextLine();
+				System.out.print("Teléfono Nuevo: ");
+				telefono = sc.nextLine();
+				contactos.modificarTelefono(nombre, apellido, telefono);
+				break;
+			case 5:
+				System.out.print("Nombre: ");
+				nombre = sc.nextLine();
+				System.out.print("Apellido: ");
+				apellido = sc.nextLine();
+				contactos.eliminarContacto(nombre, apellido);
+				break;
+			default:
+				System.out.println("Opción inválida.");
+			}
+		}while(numMenu != 6);
+		System.out.println("Saliste de tu Agenda Telefónica");
+		sc.close();
+>>>>>>> 4027c4345b34c9a4ea4f74b5ccfd3842b1f29ae6
 		
-		agenda.añadirContacto(contacto);
-		agenda.añadirContacto(contacto2);
-		agenda.añadirContacto(contacto3);
-		
-		
-		
-		
-		agenda.listarContactos();
-		
-		agenda.buscaContacto("JaaaimE");
-		agenda.modificarTelefono("Dom", "Ran", "123");
-		agenda.espaciosLibres();
-		System.out.println(contacto);
 	
 	}
 }
