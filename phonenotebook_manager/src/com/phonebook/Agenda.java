@@ -16,6 +16,14 @@ public class Agenda {
         this.contactos = new HashMap<>();
     }
     
+    public boolean existeContacto(Contacto c) {
+    	if(contactos.containsKey(c.getNombre().trim().toLowerCase())) {
+    		System.out.println("Ya existe un contacto con ese nombre");
+    		return true;
+    	}
+    	return false;
+    }
+    
     public void añadirContacto(Contacto c) {
     	
     	if(contactos.size() >= limiteContactos) {
@@ -23,7 +31,7 @@ public class Agenda {
     		return;
     	}
     	
-    	if(contactos.containsKey(c.getNombre().trim().toLowerCase())) {
+    	if(existeContacto(c)) {
     		System.out.println("Ya existe un contacto con ese nombre");
     		return;
     	}
@@ -35,6 +43,12 @@ public class Agenda {
     	
     	contactos.put(c.getNombre().trim().toLowerCase(), c);
     	System.out.println("Se agregó correctamente");
+    }
+    
+    public void listarContactos() {
+    	for(Contacto c : contactos.values()) {
+    		System.out.println(c);
+    	}
     }
 
 	
