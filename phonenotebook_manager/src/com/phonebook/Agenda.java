@@ -40,7 +40,7 @@ public class Agenda {
 			return;
 		}
 
-		contactos.put(normalizarNombre(c.getNombre()), c);
+		contactos.put(c);
 		System.out.println("Se agregó correctamente");
 	}
 
