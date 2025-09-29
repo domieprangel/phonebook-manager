@@ -3,7 +3,10 @@ package com.phonebook;
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		Contacto contacto = new Contacto("", "123456878");
+		Agenda agenda = new Agenda();
+		
+		agenda.añadirContacto(contacto);
 
 	}
 
