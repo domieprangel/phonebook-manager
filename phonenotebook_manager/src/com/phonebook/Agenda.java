@@ -54,8 +54,8 @@ public class Agenda {
 		}
 	}
 
-	private String normalizarNombre(String n) {
-		return n.trim().toLowerCase();
+	private String normalizarNombre(Contacto c) {
+		return (c.getNombre().trim() + c.getApellido().trim()).toLowerCase();
 	}
 
 	public void buscaContacto(String nombre) {
