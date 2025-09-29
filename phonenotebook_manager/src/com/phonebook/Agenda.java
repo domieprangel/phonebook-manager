@@ -84,4 +84,14 @@ public class Agenda {
         System.out.println("Espacios libres en la agenda: " + libres);
     }
 
+    //Eliminar contacto
+    public void eliminarContacto(String nombre) {
+    	if (contactos.remove(nombre) != null) {
+    		System.out.println("Contacto: " + nombre + "eliminado de la lista exitosamente.");
+    	} else {
+    		System.out.println("No se encontró ningún contacto con el nombre " + nombre + ", nada fue eliminado.");
+    	}
+    	
+    }
+    
 }
