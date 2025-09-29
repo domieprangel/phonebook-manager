@@ -34,18 +34,14 @@ public class Agenda {
 	        return;
 	    }
 
-	    if (c.getNombre().trim().isEmpty()) {
+	    if (c.getNombre().trim().isEmpty() ||c.getApellido().trim().isEmpty() || c.getTelefono().trim().isEmpty()) {
 	        System.out.println("El nombre no puede estar vacío. Ingresa un nombre:");
 	        return;
 	    }
 
-<<<<<<< HEAD
-		contactos.put(c);
-		System.out.println("Se agregó correctamente");
-=======
 	    contactos.put(clave, c);
 	    System.out.println("Se agregó correctamente");
->>>>>>> 4027c4345b34c9a4ea4f74b5ccfd3842b1f29ae6
+
 	}
 
 	public void listarContactos() {

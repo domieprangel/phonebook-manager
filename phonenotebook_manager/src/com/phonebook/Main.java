@@ -5,12 +5,7 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-<<<<<<< HEAD
-		Contacto contacto = new Contacto("Dom","Ran","123456878");
-		Contacto contacto2 = new Contacto("Jaime","Rdgz","123456878");
-		Contacto contacto3 = new Contacto("Jen","Martinez","123456878");
-		Agenda agenda = new Agenda();
-=======
+
 		Scanner sc = new Scanner(System.in);
 		Agenda contactos = new Agenda();
 		int numMenu = 0;
@@ -74,7 +69,7 @@ public class Main {
 		}while(numMenu != 6);
 		System.out.println("Saliste de tu Agenda Telefónica");
 		sc.close();
->>>>>>> 4027c4345b34c9a4ea4f74b5ccfd3842b1f29ae6
+
 		
 	
 	}
