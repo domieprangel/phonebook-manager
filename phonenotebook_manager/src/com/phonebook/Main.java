@@ -2,11 +2,20 @@ package com.phonebook;
 
 import java.util.Scanner;
 
+/**
+ * Clase principal que contiene el punto de entrada de la aplicación (método main).
+ * Implementa un menú interactivo para gestionar la Agenda de contactos.
+ */
 public class Main {
 
+	/**
+	 * Método principal para ejecutar la aplicación de agenda telefónica.
+	 * @param args Argumentos de la línea de comandos (no utilizados).
+	 */
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
+		// Se inicializa la agenda con un límite de 2 contactos para pruebas.
 		Agenda contactos = new Agenda(2);
 		int numMenu = 0;
 		String nombre;
@@ -24,8 +33,18 @@ public class Main {
 			System.out.println("6. Salir del menú");
 			System.out.println("===============================");
 			System.out.print("Escribe el número de la acción que deseas realizar: ");
-			numMenu = sc.nextInt();
-			sc.nextLine();
+			
+			// Manejo de la opción del menú
+			if (sc.hasNextInt()) {
+				numMenu = sc.nextInt();
+				sc.nextLine(); // Consumir el salto de línea
+			} else {
+				System.out.println("Entrada inválida. Por favor, introduce un número.");
+				sc.nextLine(); // Consumir la entrada inválida
+				numMenu = 0; // Para asegurar que el bucle continúe si la entrada es no numérica
+				continue;
+			}
+			
 			switch (numMenu) {
 			case 1:
 				if(contactos.hayEspacacio()) {
@@ -66,14 +85,14 @@ public class Main {
 				apellido = sc.nextLine();
 				contactos.eliminarContacto(nombre, apellido);
 				break;
+			case 6:
+				// Salir del bucle
+				break;
 			default:
 				System.out.println("Opción inválida.");
 			}
 		}while(numMenu != 6);
 		System.out.println("Saliste de tu Agenda Telefónica");
 		sc.close();
-
-		
-	
 	}
 }
